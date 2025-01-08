@@ -1,0 +1,55 @@
+
+"saisir le nombre d'étudiant"
+
+print("combien d'étudiants souhaitez-vous saisir")
+nombre = int(input("Entrez le nombre souhaiter : "))
+"liste etudiant"
+
+etudiant = []
+note = []
+
+for i in range (nombre) :
+    print(f"nom de l'etudiant " + str(i+1))
+    etudiant.append(input())
+    note.append(int(input("note de l'etudiant " + etudiant[i] + " : ")))
+
+def calculer_moyenne(n) :
+    somme = 0
+    for i in n :
+        somme = somme + i
+    somme = somme / len(n)
+
+    print(f"la moyenne de la classse est de : {somme}")
+
+calculer_moyenne(note)
+
+def afficher_repartition(noms, notes) :
+
+    reussite = []
+    echec = []
+
+    for i in range (len(notes)) :
+         if notes[i]>= 10 :
+             #print(f"Étudiants ayant réussi : {noms[i]}")
+             reussite.append(noms[i])
+         else:
+             #print(f"Étudiants en échec : {noms[i]}")
+            echec.append(noms[i])
+    print("echec", echec)
+    print("reussite", reussite)
+
+afficher_repartition(etudiant, note)
+
+def meilleure_note(noms, notes) :
+
+    #ma_note =0
+    position_note=0
+
+    for i in range(len(notes)):
+        if notes[i] >= note[position_note] :
+            #ma_note= notes[i]
+            position_note=i
+    print(f"L’étudiant ayant la meilleure note est : {noms[position_note]} avec {note[position_note]}")
+
+
+meilleure_note(etudiant, note)
