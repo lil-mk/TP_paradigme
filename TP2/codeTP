@@ -1,0 +1,51 @@
+from functools import reduce
+
+prix_euros = [50, 20, 35, 100, 80]
+taux_conversion = 1.10
+prix_dollars = list(map(lambda x: round(x * taux_conversion, 2), prix_euros))
+prix_dollars_avec_symbole = list(map(lambda x: f"${x}", prix_dollars))
+
+ages = [12, 25, 17, 18, 40, 15, 22]
+adultes = list(filter(lambda x: x >= 18, ages))
+ages_seniors = [55, 60, 70, 45, 80]
+seniors = list(filter(lambda x: x >= 60, ages_seniors))
+
+ventes = [120, 50, 30, 20, 90, 100]
+total_ventes = reduce(lambda x, y: x + y, ventes)
+produit_ventes = reduce(lambda x, y: x * y, ventes)
+
+notes = [12, 15, 9, 18, 6, 20, 14]
+notes_sur_100 = list(map(lambda x: x * 5, notes))
+notes_superieures_50 = list(filter(lambda x: x >= 50, notes_sur_100))
+moyenne_notes = reduce(lambda x, y: x + y, notes_superieures_50) / len(notes_superieures_50) if notes_superieures_50 else 0
+
+employes = [
+    {"nom": "Alice", "age": 25, "salaire": 40000},
+    {"nom": "Bob", "age": 35, "salaire": 55000},
+    {"nom": "Charlie", "age": 30, "salaire": 60000},
+    {"nom": "Diana", "age": 40, "salaire": 25000},
+]
+noms_majuscules = list(map(lambda emp: emp["nom"].upper(), employes))
+employes_salaire_sup_50000 = list(filter(lambda emp: emp["salaire"] > 50000, employes))
+salaire_total = reduce(lambda x, y: x + y["salaire"], employes_salaire_sup_50000, 0)
+for emp in employes:
+    if emp["salaire"] < 30000:
+        emp["niveau"] = "Junior"
+    elif 30000 <= emp["salaire"] <= 50000:
+        emp["niveau"] = "Intermédiaire"
+    else:
+        emp["niveau"] = "Senior"
+
+print(prix_dollars)
+print(prix_dollars_avec_symbole)
+print(adultes)
+print(seniors)
+print(total_ventes)
+print(produit_ventes)
+print(notes_sur_100)
+print(notes_superieures_50)
+print(moyenne_notes)
+print(noms_majuscules)
+print(employes_salaire_sup_50000)
+print(salaire_total)
+print(employes)
